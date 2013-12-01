@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=1024" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<title>Web Socket</title>
+<meta name="description" content="Innovation presentation: Responsive design and web socket..." />
+<meta name="author" content="Victor Fleurant" />
+<link href="css/impress.css" rel="stylesheet" />
+<link href="css/atos.css" rel="stylesheet" />
+<link rel="shortcut icon" href="favicon.png" />
+</head>
+
+
+<body class="impress-not-supported">
+
+	<!-- Si le browser ne supporte pas HTML5 -->
+	<div class="fallback-message">
+		<p>
+			Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified
+			version of this presentation.
+		</p>
+		<p>
+			For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.
+		</p>
+	</div>
+
+	<!-- Coeur de la prsentation -->
+	<div id="impress">
+	
+		<div id="slide-websocket-1" class="step slide template" data-x="-1000" data-y="-500">
+			<div class="slideTitle">
+				<span class="slideSubtitle">P&eacute;sentation </span>WebSocket
+			</div>
+			<div class="slideContent">
+				<img src="./resources/html5.png" style="vertical-align:middle;padding-left:25%;max-width: 50%"></img><br/><br/>
+				<div style="padding-left:30%;">
+					connexions : <span id="userSimultane"></span>
+				</div>
+			</div>
+		</div>
+		
+		<div id="slide-websocket-2" class="step slide template" data-x="0" data-y="-500" data-rotate-y="90">
+			<div class="slideTitle">
+				<span class="slideSubtitle">Sommaire</span>
+			</div>
+			<div class="slideContent">
+				<ul> 
+					<li>L'ancêtre du webSocket : AJAX</li><br/>
+					<li>AJAX par l'exemple</li><br/>
+					<li>Définition du webSocket</li><br/>
+					<li>Avantages / inconvénients</li><br/>
+					<li>Exemples</li><br/>
+					<li>Fonctionnement général</li><br/>
+					<li>Fonctionnement détaillé : serveur & client</li><br/>				
+				</ul>
+			</div>
+		</div>
+		
+		<div id="slide-websocket-3" class="step slide template" data-x="2000" data-y="-500" data-rotate-y="90">
+			<div class="slideTitle">
+				<span class="slideSubtitle">L'ancêtre du webSocket : </span>AJAX
+			</div>
+			<div class="slideContent">
+				<img src="./resources/ajax.png" style="padding-left:15%;max-width: 40%;"></img>
+				<ul> 
+					<li>Objet Javascript XMLHttpRequest pour communiquer client / serveur de façon asynchrone.</li><br/>
+					<li>Disponible depuis 2001.</li><br/>
+					<li>Simulation temps réel ? => appels serveur toutes les X secondes</li><br/>
+				</ul>
+			</div>
+		</div>
+		
+		<div id="slide-websocket-4" class="step slide template" data-x="4000" data-y="-500" data-rotate-y="90">
+			<div class="slideTitle">
+				<span class="slideSubtitle">Exemple</span> AJAX
+			</div>
+			<div class="slideContent" style="font-size:18px;">
+				&ltform method="post" action="add.php"&gt <br/> 
+				&ltinput name="a" type="number" &gt <br/> 
+				&ltinput name="b" type="number" &gt <br/> 
+				&ltform&gt<br/> 
+				
+				function OnReady(){ $("form").submit(OnSubmit); <span style="font-size: 15px;font-style: normal;color: grey;">// Abonne un callback à l'évènement "submit" du formulaire }</span> <br/>
+				function OnSubmit(data){ $.ajax({ "POST", <br/>
+				url: "add.php", <span style="font-size: 15px;font-style: normal;color: grey;">// Récupère l'url serveur</span> <br/>
+				data: $(this).serialize(), <span style="font-size: 15px;font-style: normal;color: grey;">// Fabrique la "query string" contenant les deux nombres </span><br/>
+				success: OnSuccess <span style="font-size: 15px;font-style: normal;color: grey;">// Callback qui récupère la réponse du serveur }); </span><br/>
+				return false; <span style="font-size: 15px;font-style: normal;color: grey;">// Annule l'envoi classique du formulaire }</span> <br/>
+				function OnSuccess(result){ $("#result").html(result); <span style="font-size: 15px;font-style: normal;color: grey;">// Insère le résultat dans la balise d'id "result" }</span><br/>
+			</div>
+		</div>
+		
+		<div id="slide-websocket-5" class="step slide template" data-x="4000" data-y="500" data-rotate-y="90">
+			<div class="slideTitle">
+				WebSocket <span class="slideSubtitle"><br />D&eacute;finition</span>
+			</div>
+			<div class="slideContent">
+				Les WebSockets permettent d'établir des connexions TCP full-duplex standard directement depuis le navigateur, sans
+				plugin additionnel. <br />
+				<br /> Elles pourront donc traverser les proxies et firewalls de manière transparente, et être établies
+				vers des serveurs autres que le serveur d'origine de la page, à condition bien sûr qu'ils soient compatibles
+				websocket.
+			</div>
+		</div>
+		
+		<div id="slide-websocket-6" class="step slide template" data-x="4000" data-y="3500" data-rotate-y="90">
+			<div class="slideTitle">
+				WebSocket <span class="slideSubtitle"><br />Avantages-Inconvenients</span>
+			</div>
+			<div class="slideContent">
+				<ul>
+					<li>Avantages</li>
+					<ul>
+						<li>Développé par le W3C (Standard IETF)</li>
+						<li>Un canal de communication bidirectionnel</li>
+						<li>Transparent pour les firewalls, proxy, et routeurs</li>
+						<li>Optimise le trafic réseau</li>
+						<li>affichage temps réel</li>							
+					</ul>
+					<br/>
+					<li>Inconvénients</li>
+					<ul>
+						<li>Spécification toujours en draft</li>
+						<li>Compatibilité des navigateurs</li>
+					</ul>
+				</ul>
+			</div>
+		</div>
+		
+		<div id="slide-websocket-7" class="step slide template" data-x="4000" data-y="4500" data-rotate-y="90">
+			<div class="slideTitle">
+				WebSocket <span class="slideSubtitle"><br />Exemple - Partage de texte</span>
+			</div>
+			<div class="slideContent">
+				<TEXTAREA style="margin: 2px; width: 100%; height: 100%;" rows="10" id="partageCommentaires" name="commentaires"
+					onkeyup="impress().dispatchText()"></TEXTAREA>
+			</div>
+			<p id="linkForMobile" class="notMobile">
+				<a href="#" onclick='impress().takeLead()'>Activer le défilement</a>
+			</p>
+		</div>
+		
+		<div id="slide-websocket-8" class="step slide template" data-x="5000" data-y="4500" data-rotate-y="0">
+			<div class="slideTitle">
+				WebSocket <span class="slideSubtitle"><br />Exemple - Diffusion</span>
+			</div>
+			<div class="slideContent">
+				<div align="center">
+				<table border="1" width="100%" align="center">
+					<tr style="vertical-align:middle" align="center">
+					<td style="vertical-align:middle" width="40%"><img src="./resources/rg.png" width="100%" /></td>
+					<td style="vertical-align:middle">Nadal</td>
+					<td style="vertical-align:middle"><span id="scoreTennis">0-0</span></td>
+					<td style="vertical-align:middle">Federer</td>
+					</tr>
+				</table>
+				</div>
+			</div>
+		</div>
+		
+		<div id="slide-websocket-9" class="step slide template" data-x="4000" data-y="5500" data-rotate-y="0">
+			<div class="slideTitle">
+				<span class="slideSubtitle">En détails </span>Diagramme de séquence
+			</div>
+			<div class="slideContent">
+				<img src="./resources/sequence.png"></img>
+			</div>
+		</div>
+		
+		<div id="slide-websocket-10" class="step slide template" data-x="3000" data-y="3500" data-rotate-y="90">
+			<div class="slideTitle">
+				<span class="slideSubtitle">En détails </span>Serveur
+			</div>
+			<div class="slideContent">
+				<img src="./resources/java.png"></img>
+			</div>
+		</div>
+		
+		<div id="slide-websocket-11" class="step slide template" data-x="2000" data-y="2500" data-rotate-y="90">
+			<div class="slideTitle">
+				<span class="slideSubtitle">En détails </span>Client
+			</div>
+			<div class="slideContent">
+				<ul>
+					<li>ws = new WebSocket("ws://url/");</li><br/>
+					<li>ws.onopen = function(){}</li><br/>
+					<li>ws.onmessage = function(evt){}</li><br/>
+					<li>ws.onclose = function(){}</li>
+				</ul>
+			</div>
+		</div>
+		
+		<div id="slide-websocket-12" class="step slide template" data-x="500" data-y="500" data-rotate-y="90">
+			<div class="slideTitle">
+				<span class="slideSubtitle">Sources </span>
+			</div>
+			<div class="slideContent">
+				<img src="./resources/blacktocat.png" style="padding-left:25%;max-width: 50%"></img>
+				http://baba.com
+			</div>
+		</div>
+		
+	<div id="isConnected" class="connected"></div>
+	<!-- Chargement des scripts pour lancer l'application-->
+	<script src="js/impress_websocket.js"></script>
+	<script>
+		impress().init();
+	</script>
+</body>
+</html>

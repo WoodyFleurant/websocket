@@ -1,0 +1,396 @@
+body {
+	color: #fff;
+	font-family: Helvetica, Arial, sans-serif;
+	padding: 0;
+	margin: 0;
+}
+
+h1 {
+	margin: 18px 12px;
+	padding: 0;
+	font-size: 128px;
+	letter-spacing: -6px;
+	line-height: 100px;
+	color: rgba(255, 255, 255, 0.15);
+	text-rendering: optimizeLegibility;
+}
+
+p {
+	margin: 0 0 10px 0;
+	font-size: 11px;
+}
+
+#background {
+	overflow: hidden;
+}
+
+#background #resize {
+	position: fixed;
+	z-index: 10;
+	overflow: visible;
+	bottom: 8px;
+	right: 0;
+	border: none;
+}
+
+#background #resize:before {
+	content: '';
+	border: 12px solid #fff;
+	border-color: transparent rgba(255, 255, 255, .3) transparent
+		transparent;
+	width: 0;
+	height: 0;
+	float: left;
+	margin: 8px 10px 0 0;
+}
+
+#resize h2 {
+	margin: 0;
+	font-weight: bold;
+	font-size: 36px;
+	letter-spacing: -2px;
+	line-height: 40px;
+	height: 40px;
+	float: left;
+}
+
+#resize h2:after {
+	content: '';
+	border: 12px solid #fff;
+	border-color: transparent transparent transparent
+		rgba(255, 255, 255, .3);
+	width: 0;
+	height: 0;
+	float: right;
+	margin: 8px 0 0 10px;
+}
+
+#background div {
+	border: 1px solid rgba(255, 255, 255, 0.3);
+	margin: -1px 0 0 -1px;
+}
+
+.floatleft {
+	float: left;
+	width: 45%;
+}
+
+#laptop {
+	width: 640px;
+	height: 400px;
+}
+
+#tabletlandscape {
+	width: 512px;
+	height: 384px;
+}
+
+#tabletportrait {
+	width: 384px;
+	height: 512px;
+}
+
+#mobilelandscape {
+	width: 240px;
+	height: 160px;
+}
+
+#mobileportrait {
+	width: 160px;
+	height: 240px;
+}
+
+@
+-webkit-keyframes fadein { 0% {
+	opacity: 0;
+}
+
+100%
+{
+opacity
+:
+ 
+1;
+}
+}
+
+#device,#device * {
+	-webkit-transition: all .7s ease-in-out;
+}
+
+#device {
+	background-color: #333;
+	float: left;
+	position: relative;
+	box-shadow: 0 10px 20px rgba(0, 0, 0, .5);
+	-webkit-perspective: 2000px;
+	-webkit-transform-style: preserve-3d;
+}
+
+#screen {
+	background-color: #fff;
+	text-align: center;
+	box-shadow: 0 0 20px rgba(255, 255, 255, .3);
+	border-radius: 2px;
+}
+
+#screen h1 {
+	color: #333;
+	font-weight: bold;
+	font-size: 36px;
+	letter-spacing: -2px;
+	margin: 0;
+}
+
+#detail {
+	background-color: #333;
+	-webkit-transform: rotateX(0);
+}
+/* iMac ------------------------------------------------------- */
+body {
+	min-height: 600px;
+}
+
+#device {
+	border-radius: 20px;
+	border: 2px solid #666;
+	margin-left: 100px;
+}
+
+#screen {
+	width: 480px;
+	height: 270px;
+	margin: 50px;
+}
+
+#screen h1 {
+	line-height: 265px;
+	-webkit-animation: fadein 3s;
+}
+
+#screen h1:before {
+	content: 'Desktop';
+}
+
+#detail {
+	width: 325px;
+	height: 180px;
+	margin: 0;
+	position: absolute;
+	top: 105%;
+	right: 192px;
+	margin: 0 auto;
+	border-radius: 18px;
+	border: 4px solid #666;
+	background-color: #666;
+	box-shadow: 0 30px 20px rgba(0, 0, 0, .5);
+	-webkit-transform: rotateX(75deg);
+	-webkit-transform-origin: 50% 0;
+}
+
+#detail>div {
+	width: 310px;
+	height: 160px;
+	margin: 10px 10px;
+	border-radius: 10px;
+	background-color: #333;
+}
+
+#detail>div>div {
+	margin: 0 0 0 350px;
+	width: 60px;
+	height: 100px;
+	border-radius: 60px 60px 30px 30px;
+	background-color: #666;
+	box-shadow: 0 30px 20px rgba(0, 0, 0, .5);
+}
+
+/* MacBook ------------------------------------------------------- */
+@media screen and (max-width: 768px) {
+	body {
+		min-height: 500px;
+	}
+	#device {
+		border-radius: 20px;
+		border: 4px solid #666;
+	}
+	#screen {
+		width: 360px;
+		height: 275px;
+		margin: 17px;
+	}
+	#screen h1 {
+		line-height: 220px;
+	}
+	#screen h1:before {
+		content: 'Laptop';
+	}
+	#detail {
+		width: 395px;
+		height: 260px;
+		margin: 0;
+		position: absolute;
+		top: 100%;
+		right: 0;
+		border-radius: 14px;
+		border: 4px solid #666;
+		background-color: #666;
+		box-shadow: 0 15px 10px rgba(0, 0, 0, .5);
+		-webkit-transform: rotateX(75deg);
+		-webkit-transform-origin: 50% 0;
+	}
+	#detail>div {
+		height: 240px;
+		width: 295px;
+		margin: 20px 50px;
+		border: 0 solid #666;
+		border-radius: 10px;
+		background-color: #333;
+	}
+	#detail>div>div {
+		margin: 0 0 0 350px;
+		width: 240px;
+		height: 180px;
+		border-radius: 15px 15px 15px 15px;
+		background-color: #666;
+		box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+		opacity: 0;
+	}
+}
+
+/* iPad ------------------------------------------------------- */
+@media screen and (max-width: 640px) {
+	body {
+		min-height: 390px;
+	}
+	#device {
+		border-radius: 20px;
+		border: 4px solid #666;
+		margin: 80px 100px;
+	}
+	#screen {
+		width: 256px;
+		height: 192px;
+		margin: 25px 28px;
+	}
+	#screen h1 {
+		line-height: 187px;
+	}
+	#screen h1:before {
+		content: 'Tablet';
+	}
+	#detail {
+		width: 14px;
+		height: 14px;
+		margin: 7px 0 0 0;
+		position: absolute;
+		top: 50%;
+		right: 6px;
+		border: 1px solid #666;
+		border-radius: 28px;
+		background-color: #333;
+		box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+		-webkit-transform: rotateX(180deg);
+	}
+	#detail>div {
+		width: 5px;
+		height: 5px;
+		margin: 3px;
+		border: 2px solid #999;
+		border-radius: 4px;
+		background-color: #333;
+	}
+	#detail>div>div {
+		display: none;
+	}
+}
+
+/* iPad (portrait) ------------------------------------------------------- */
+@media screen and (max-width: 512px) {
+	#device {
+		-webkit-transform: rotate(90deg);
+		margin: 70px 0 70px 100px;
+		box-shadow: 10px 0 20px rgba(0, 0, 0, .5);
+	}
+	#screen h1 {
+		-webkit-transform: rotate(-90deg);
+	}
+}
+
+/* iPhone ------------------------------------------------------- */
+@media screen and (max-width: 448px) {
+	body {
+		min-height: 250px;
+	}
+	#device {
+		-webkit-transform: rotate(0);
+		margin: 100px 100px;
+		border-radius: 10px;
+		border: 4px solid #666;
+		box-shadow: 0 10px 20px rgba(0, 0, 0, .5);
+	}
+	#screen {
+		width: 120px;
+		height: 80px;
+		margin: 2px 25px 2px 23px;
+	}
+	#screen h1 {
+		line-height: 75px;
+		-webkit-transform: rotate(0);
+	}
+	#screen h1:before {
+		content: 'Mobile';
+	}
+	#detail {
+		width: 14px;
+		height: 14px;
+		margin: 7px 0 0 0;
+		position: absolute;
+		top: 50%;
+		right: 5px;
+		border: 1px solid #666;
+		border-radius: 14px;
+		background-color: #333;
+		-webkit-transform: rotateX(180deg);
+	}
+	#detail>div {
+		width: 5px;
+		height: 5px;
+		margin: 3px;
+		border: 1px solid #999;
+		border-radius: 2px;
+		background-color: #333;
+	}
+	#detail>div>div {
+		display: none;
+	}
+}
+
+/* iPhone (portrait) ------------------------------------------------------- */
+@media screen and (max-width: 384px) {
+	#device {
+		-webkit-transform: rotate(90deg);
+		margin: 41px 0 41px -41px;
+		box-shadow: 10px 0 20px rgba(0, 0, 0, .5);
+	}
+	#screen h1 {
+		-webkit-transform: rotate(-90deg);
+	}
+}
+
+@media screen and (max-device-width: 768px) {
+	body {
+		max-width: 100%;
+	}
+	#resize,#information {
+		display: none;
+	}
+	#handheld {
+		opacity: 1;
+		display: block;
+	}
+	#handheld p {
+		opacity: 1;
+		display: block;
+	}
+}

@@ -1,0 +1,118 @@
+/* Red�finition de styles pr�sents dans impress.css */
+body {
+	font-family: Verdana !important;
+	background-image: url('logo_atos.png');
+	background-repeat: no-repeat;
+	background-position: right bottom;
+	/* background: rgb(215, 215, 215);
+    background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 500, from(rgb(240, 240, 240)), to(rgb(0, 134, 206)));
+    background: -webkit-radial-gradient(rgb(240, 240, 240), rgb(0, 134, 206));
+    background:    -moz-radial-gradient(rgb(240, 240, 240), rgb(0, 134, 206));
+    background:     -ms-radial-gradient(rgb(240, 240, 240), rgb(0, 134, 206));
+    background:      -o-radial-gradient(rgb(240, 240, 240), rgb(0, 134, 206));
+    background:         radial-gradient(rgb(240, 240, 240), rgb(0, 134, 206)); */
+}
+
+comm{
+	font-size:12px;
+	color: grey;
+}
+
+ul {
+	list-style-image: url(atos_bullet.png);
+}
+
+ul>ul {
+	list-style-image: url(atos_bullet_2.png);
+}
+
+ul>ul>li {
+	font-size:24px;
+}
+
+.normalBar {
+	position: absolute;
+	left: 61px;
+}
+
+.slideTitle .normalBar {
+	top: 152px;
+}
+
+.bottomBar {
+	bottom: 40px;
+}
+
+.impress-enabled .step {
+	opacity: 0.5;
+}
+
+.slide {
+	color: rgb(0, 0, 0);
+	font-family: Verdana;
+	border: 1px solid rgba(0, 0, 0, 0.9);
+	letter-spacing: 0px;
+}
+
+/* Styles perso */
+.slideTitle {
+	font-weight: bold;
+	height: 50px;
+}
+
+.slideSubtitle {
+	color: grey;
+}
+
+.titleBar {
+	margin-top: 30%;
+	margin-left: 19%;
+	margin-right: 19%;
+}
+
+.title {
+	text-align: center;
+}
+
+.title p {
+	margin-top: 5%;
+	font-size: 1.8em;
+}
+
+.slideContent {
+	margin-top: 40px;
+}
+
+/* Map Kinetics */
+#tango {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	padding: 10px;
+}
+
+#container {
+	background-image:
+		url('http://www.html5canvastutorials.com/demos/assets/map-background.png');
+	display: inline-block;
+	overflow: hidden;
+	height: 262px;
+	width: 580px;
+	background-position: 1px 1px;
+}
+
+.notMobile {
+	display: none;
+}
+
+.connected {
+	background-image: url('../resources/connected.png');
+	background-repeat: no-repeat;
+	background-position: right bottom;
+}
+
+.notConnected {
+	background-image: url('../resources/notConnected.png');
+	background-repeat: no-repeat;
+	background-position: right bottom;
+}

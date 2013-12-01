@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=1024" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<title>Innovation 2 - Télécommande</title>
+<meta name="description" content="Innovation presentation: Responsive design and web socket..." />
+<meta name="author" content="Atos Worldline" />
+<link href="css/impress.css" rel="stylesheet" />
+<link href="css/atos.css" rel="stylesheet" />
+<link rel="shortcut icon" href="favicon.png" />
+</head>
+
+
+<body class="impress-not-supported">
+
+	<script>
+		var ws = new WebSocket("ws://qualifweb-orrm.aw.atosorigin.com:17001");
+        var sendPrev = function () {       
+	        ws.send('gotoPrev')
+        };
+        
+        var sendNext = function () {       
+            ws.send('gotoNext')
+        };
+	</script>
+
+
+	<!-- Coeur de la prsentation -->
+	<div id="impress">
+	
+		<div class="step slide template" data-x="0" data-y="0">
+			<div class="slideTitle">
+				Télécommande <span class="slideSubtitle"></span>
+			</div>
+			<div class="slideContent">
+				<a href="#" onclick='sendPrev()'><img src='./resources/prev.png' width="40%"></a>
+				<a href="#" onclick='sendNext()'><img src='./resources/next.png' width="40%"></a>
+			</div>
+		</div>
+</body>
+</html>
