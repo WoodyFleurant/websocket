@@ -50,7 +50,6 @@ public class PresentationMessageInbound extends MessageInbound{
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
 	}
 
 	@Override
@@ -78,7 +77,7 @@ public class PresentationMessageInbound extends MessageInbound{
 			messagecopied = CharBuffer.wrap( ID + webSockets.size() );
 		}
 		else if (mes.contains("broadcast")){
-			if (!createOne.isAlive()) createOne.run();
+			if (!createOne.isAlive()) createOne.start();
 		}
 		return messagecopied;
 	}
@@ -132,16 +131,14 @@ public class PresentationMessageInbound extends MessageInbound{
 		}
 		
 		//MAJ clients
-		try {
-			onTextMessage(CharBuffer.wrap("score_"+matchScoreString));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		for (WsOutbound connection : webSockets) {
+			CharBuffer messagecopied = CharBuffer.wrap("score_"+matchScoreString);
+			System.out.println("for : " + connection.hashCode());
+			try {
+				connection.writeTextMessage(messagecopied);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 	}
-	
-	
-	
-	
-	
 }
